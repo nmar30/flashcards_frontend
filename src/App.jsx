@@ -20,15 +20,24 @@ function App() {
         async function postData() {
             await axios.post(`collection/`, values);
         }
-        postData()
-        fetchData()
+        postData();
+        fetchData();
     }
+
+    function deleteCollection(id){
+        async function deleteData() {
+            await axios.delete(`collection/${id}`)
+        }
+        deleteData();
+        fetchData();
+    }
+
 
     return (
         <div className="container-fluid">
             <h1>Flashcards App</h1>
             <div className="container">
-                <Collections collections={collections} addCollection={addCollection.bind(this)} />
+                <Collections collections={collections} addCollection={addCollection.bind(this)} deleteCollection={deleteCollection.bind(this)} />
             </div>
         </div>
     )
