@@ -2,14 +2,16 @@ import React from 'react';
 import useForm from '../../useForm'
 import axios from '../../axios'
 
-const CollectionsForm = () => {
+const CollectionsForm = (props) => {
     const { values, handleChange, handleSubmit } = useForm(addCollection);
+    const fetchData = props.fetchData
 
     function addCollection(){
         async function postData() {
             await axios.post(`collection/`, values);
         }
         postData()
+        fetchData()
     }
 
     return (

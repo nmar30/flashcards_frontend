@@ -3,10 +3,11 @@ import CollectionsForm from '../CollectionsForm/CollectionsForm'
 
 const Collections = (props) => {
     const collections = props.collections
+    const fetchData = props.fetchData
     return (
         <div className="row">
             {collections.map(item => <CollectionsItem key={item.id} item={item} />)}
-            <CollectionsForm />
+            <CollectionsForm fetchData={fetchData}/>
         </div>    
     )
 } 
@@ -20,7 +21,7 @@ const CollectionsItem = (props) => {
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">{item.description}</p>
                 <button className="btn btn-primary">Edit</button>
-                <button href="#" className="btn btn-danger">Delete</button>
+                <button className="btn btn-danger">Delete</button>
             </div>
             </div>
         </div>
