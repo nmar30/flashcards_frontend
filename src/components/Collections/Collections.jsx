@@ -11,13 +11,30 @@ function Collections() {
             return request
         }
         fetchData()
-    },[])
+    },[]);
 
-    console.log(collections)
+    const renderCollections = () => {
+        return (
+            <div>
+                {collections.map(item => <CollectionsItem key={item.id} item={item} />)}
+            </div>
+        )
+    } 
+
+    const CollectionsItem = (props) => {
+        const item = props.item
+        return (
+            <div>
+            <h1>{item.name}</h1>
+            <p>{item.description}</p>
+            </div>
+
+        )
+    }
 
     return (
         <div>
-
+            {renderCollections()}
         </div>
     )
 }
