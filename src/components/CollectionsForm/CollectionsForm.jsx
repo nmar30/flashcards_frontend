@@ -3,17 +3,13 @@ import useForm from '../../useForm'
 import axios from '../../axios'
 
 const CollectionsForm = (props) => {
-    const { values, handleChange, handleSubmit } = useForm(addCollection);
-    const fetchData = props.fetchData
+    const addCollection = props.addCollection
+    const { values, handleChange, handleSubmit } = useForm(registerCollection);
 
-    function addCollection(){
-        async function postData() {
-            await axios.post(`collection/`, values);
-        }
-        postData()
-        fetchData()
+    function registerCollection(){
+        addCollection(values)
     }
-
+    
     return (
         <div className='col-sm-4'>
             

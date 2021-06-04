@@ -16,11 +16,19 @@ function App() {
         fetchData()
     }, [] );
 
+    function addCollection(values){
+        async function postData() {
+            await axios.post(`collection/`, values);
+        }
+        postData()
+        fetchData()
+    }
+
     return (
         <div className="container-fluid">
             <h1>Flashcards App</h1>
             <div className="container">
-                <Collections collections={collections} fetchData={fetchData.bind(this)} />
+                <Collections collections={collections} addCollection={addCollection.bind(this)} />
             </div>
         </div>
     )

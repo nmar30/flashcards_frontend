@@ -3,11 +3,11 @@ import CollectionsForm from '../CollectionsForm/CollectionsForm'
 
 const Collections = (props) => {
     const collections = props.collections
-    const fetchData = props.fetchData
+    const addCollection = props.addCollection
     return (
         <div className="row">
             {collections.map(item => <CollectionsItem key={item.id} item={item} />)}
-            <CollectionsForm fetchData={fetchData}/>
+            <CollectionsForm addCollection={addCollection}/>
         </div>    
     )
 } 
