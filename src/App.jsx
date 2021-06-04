@@ -13,11 +13,14 @@ function App() {
             return request
         }
         fetchData()
-    },[]);
+    });
 
     return (
-        <div>
-            <Collections collections={collections}/>
+        <div className="container-fluid">
+            <h1>Flashcards App</h1>
+            <div className="container">
+                <Collections collections={collections}/>
+            </div>
         </div>
     )
 }

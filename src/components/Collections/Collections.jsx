@@ -1,22 +1,29 @@
 import React from 'react';
+import CollectionsForm from '../CollectionsForm/CollectionsForm'
 
 const Collections = (props) => {
     const collections = props.collections
-        return (
-            <div>
-                {collections.map(item => <CollectionsItem key={item.id} item={item} />)}
-            </div>
-        )
-    } 
+    return (
+        <div className="row">
+            {collections.map(item => <CollectionsItem key={item.id} item={item} />)}
+            <CollectionsForm />
+        </div>    
+    )
+} 
 
 const CollectionsItem = (props) => {
     const item = props.item
     return (
-        <div>
-        <h1>{item.name}</h1>
-        <p>{item.description}</p>
+        <div className='col-sm-4'>
+            <div className="card" style={{width: '18rem'}}>
+            <div className="card-body">
+                <h5 className="card-title">{item.name}</h5>
+                <p className="card-text">{item.description}</p>
+                <button className="btn btn-primary">Edit</button>
+                <button href="#" className="btn btn-danger">Delete</button>
+            </div>
+            </div>
         </div>
-
     )
 }
 
