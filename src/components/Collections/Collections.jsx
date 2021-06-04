@@ -1,19 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from '../../axios'
+import React from 'react';
 
-function Collections() {
-    const [collections , setCollections] = useState([]);
-
-    useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get(`collection/`);
-            setCollections(request.data)
-            return request
-        }
-        fetchData()
-    },[]);
-
-    const renderCollections = () => {
+const Collections = (props) => {
+    const collections = props.collections
         return (
             <div>
                 {collections.map(item => <CollectionsItem key={item.id} item={item} />)}
@@ -21,21 +9,14 @@ function Collections() {
         )
     } 
 
-    const CollectionsItem = (props) => {
-        const item = props.item
-        return (
-            <div>
-            <h1>{item.name}</h1>
-            <p>{item.description}</p>
-            </div>
-
-        )
-    }
-
+const CollectionsItem = (props) => {
+    const item = props.item
     return (
         <div>
-            {renderCollections()}
+        <h1>{item.name}</h1>
+        <p>{item.description}</p>
         </div>
+
     )
 }
 
