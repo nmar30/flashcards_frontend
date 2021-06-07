@@ -16,20 +16,20 @@ function App() {
         fetchData()
     }, [] );
 
-    function addCollection(values){
+    async function addCollection(values){
         async function postData() {
             await axios.post(`collection/`, values);
         }
-        postData();
-        fetchData();
+        await postData();
+        await fetchData();
     }
 
-    function deleteCollection(id){
+    async function deleteCollection(id){
         async function deleteData() {
             await axios.delete(`collection/${id}`)
         }
-        deleteData();
-        fetchData();
+        await deleteData();
+        await fetchData();
     }
 
 
