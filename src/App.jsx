@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import axios from './axios'
-import Collections from './components/Collections/Collections'
+import axios from './axios';
+import Collections from './components/Collections/Collections';
+import Flashcards from './components/Flashcards/Flashcards';
 
 function App() {
 
     const [collections , setCollections] = useState([]);
+    const [selected_collection , setSelectedCollection] = useState(null);
 
-    async function fetchData() {
+    async function fetchCollections() {
         const request = await axios.get(`collection/`);
         setCollections(request.data)
         return request
     }
 
     useEffect(() => {
-        fetchData()
+        fetchCollections()
     }, [] );
 
     async function addCollection(values){
@@ -21,7 +23,7 @@ function App() {
             await axios.post(`collection/`, values);
         }
         await postData();
-        await fetchData();
+        await fetchCollections();
     }
 
     async function deleteCollection(id){
@@ -29,15 +31,30 @@ function App() {
             await axios.delete(`collection/${id}`)
         }
         await deleteData();
-        await fetchData();
+        await fetchCollections();
+    }
+
+    function selectCollection(collection_object){
+        setSelectedCollection(collection_object)
+        setCollections(null)
+    }
+
+    function resetPage(){
+        fetchCollections();
+        setSelectedCollection(null);
     }
 
 
     return (
         <div className="container-fluid">
-            <h1>Flashcards App</h1>
+            <h1 onClick={() => resetPage()}>Flashcards App</h1>
             <div className="container">
-                <Collections collections={collections} addCollection={addCollection.bind(this)} deleteCollection={deleteCollection.bind(this)} />
+                {collections != null &&
+                    <Collections collections={collections} addCollection={addCollection.bind(this)} deleteCollection={deleteCollection.bind(this)} selectCollection={selectCollection.bind(this)} />
+                }
+                {selected_collection != null &&
+                    <Flashcards selected_collection={selected_collection} />
+                }   
             </div>
         </div>
     )
