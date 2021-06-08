@@ -99,12 +99,12 @@ const Flashcards = (props) => {
         return (
             <React.Fragment>
                 <div className='row'>
-                    <div className='col-3'>
+                    <div className='col-1'>
                         <FlashcardsForm selected_collection={selected_collection} addFlashcard={addFlashcard.bind(this)} />
                     </div>
-                    <div className='col-8'>                        
-                        <h2>{selected_collection.name}</h2>
-                        <h3>{selected_collection.description}</h3>
+                    <div className='col-10'>                        
+                        <h2 className='text-center'>{selected_collection.name}</h2>
+                        <h3 className='text-center'>{selected_collection.description}</h3>
                     </div>
                     <div className='col-1'>
                         <button className="btn btn-danger" onClick={() => deleteFlashcard() }>Delete</button>
@@ -130,14 +130,9 @@ const Flashcards = (props) => {
                 <div className='row'>
                     <div className='col'><button className="btn btn-secondary" onClick={() => previousFlashcard()}>Previous</button></div>
                     <div className='col-8'>
-                        <h3>{selected_flashcard + 1} / {flashcards.length}</h3>
+                        <h3 className='text-center'>{selected_flashcard + 1} / {flashcards.length}</h3>
                     </div>
                     <div className='col'><button className="btn btn-secondary" onClick={() => nextFlashcard()}>next</button></div>
-                </div>
-                <div className='row'>
-                    <div className='col'>
-
-                    </div>
                 </div>
             </React.Fragment>
         )
