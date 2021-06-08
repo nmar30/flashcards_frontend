@@ -37,12 +37,12 @@ const Flashcards = (props) => {
 
     async function addFlashcard(values){
         async function postData() {
-        try{
-            await axios.post(`collection/${selected_collection.id}/flashcard/`, values);    
-        } catch (er){
-            console.log('ERROR in addFlashcards', er)
+            try{
+                await axios.post(`collection/${selected_collection.id}/flashcard/`, values);    
+            } catch (er){
+                console.log('ERROR in addFlashcards', er)
+                }
             }
-        }
         await postData();
         await fetchFlashcards();
         setSelectedFlashcard(flashcards.length)
