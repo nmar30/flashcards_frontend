@@ -53,9 +53,14 @@ const Flashcards = (props) => {
             await axios.delete(`collection/${selected_collection.id}/flashcard/${flashcards[selected_flashcard].id}`)
         }
         await deleteData();
-        setSelectedFlashcard(selected_flashcard - 1)
-        await fetchFlashcards();
-        
+        const next_card = selected_flashcard - 1
+        if (flashcards[next_card] === undefined) {
+            setSelectedFlashcard(0)
+            await fetchFlashcards();
+        } else {
+            setSelectedFlashcard(selected_flashcard - 1)
+            await fetchFlashcards();
+        }
     }
 
     function nextFlashcard () {
@@ -103,14 +108,19 @@ const Flashcards = (props) => {
                 </div>
                 <div className='row'>
                     <div className='col-12'>
-                        <div className='flashcard' onClick={() => flipFlashcard()}>
-                        {current_side === 'front' &&
-                            <h1>{flashcards[selected_flashcard].front}</h1>
-                        }
-                        {current_side === 'back' &&
-                            <h1>{flashcards[selected_flashcard].back}</h1>
-                        }
-                        </div>
+                        {flashcards.length > 0 ?
+                            <div className='flashcard' onClick={() => flipFlashcard()}>
+                                {current_side === 'front' &&
+                                    <h1>{flashcards[selected_flashcard].front}</h1>
+                                }
+                                {current_side === 'back' &&
+                                    <h1>{flashcards[selected_flashcard].back}</h1>
+                                }
+                            </div>:
+                            <div className='flashcard'>
+                                <h1>Please Add A Flashcard</h1>
+                            </div> 
+                    }
                     </div>
                 </div>
                 <div className='row'>
