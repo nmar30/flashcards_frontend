@@ -1,0 +1,33 @@
+.header {
+    background-color: rgb(17, 122, 141);
+    text-align:center;
+    height:51px;
+}
+
+.header h1 {
+    color: white;
+    margin:auto;
+    vertical-align:middle;
+}
+
+
+
+.col-sm-4 {
+    padding-top: 10px
+}
+
+.flashcard{
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: auto;
+    width: 75%;
+    min-height: 400px;
+    background-color: white;
+    border: gray;
+    border-width: 5px;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from './axios';
 import Collections from './components/Collections/Collections';
 import Flashcards from './components/Flashcards/Flashcards';
+import './App.css'
+
 
 function App() {
 
@@ -46,8 +48,10 @@ function App() {
 
 
     return (
-        <div className="container-fluid">
-            <h1 onClick={() => resetPage()}>Flashcards App</h1>
+        <div className="container">
+            <div className='header' onClick={() => resetPage()}>
+                <h1>Flashcards App</h1>
+            </div>
             <div className="container">
                 {collections != null &&
                     <Collections collections={collections} addCollection={addCollection.bind(this)} deleteCollection={deleteCollection.bind(this)} selectCollection={selectCollection.bind(this)} />
