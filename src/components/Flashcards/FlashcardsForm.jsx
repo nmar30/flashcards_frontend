@@ -13,13 +13,11 @@ const FlashcardsForm = (props) => {
     }
     
     return (
-        <div className='col-sm-4'>
             <form onSubmit={handleSubmit}>
-                <input type='text' name='front' placeholder='Front' onChange={handleChange} value={values.front} />
-                <input type='text' name='back' placeholder='Back' onChange={handleChange} value={values.back} />
+                <input type='text' name='front' placeholder='Front' onChange={handleChange} value={values.front} /><br />
+                <input type='text' name='back' placeholder='Back' onChange={handleChange} value={values.back} /><br />
                 <button type='submit' className="btn btn-primary">Add Flashcard</button>
             </form>
-        </div>
 )
 }
 

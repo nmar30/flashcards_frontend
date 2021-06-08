@@ -99,14 +99,16 @@ const Flashcards = (props) => {
         return (
             <React.Fragment>
                 <div className='row'>
-                    <div className='col-1'>
+                    <div className='col'>
                         <FlashcardsForm selected_collection={selected_collection} addFlashcard={addFlashcard.bind(this)} />
                     </div>
-                    <div className='col-10'>                        
+                    <div className='col-8'>                        
                         <h2 className='text-center'>{selected_collection.name}</h2>
                         <h3 className='text-center'>{selected_collection.description}</h3>
                     </div>
-                    <div className='col-1'>
+                    <div className='col'>
+                        <br />
+                        <br />
                         <button className="btn btn-danger" onClick={() => deleteFlashcard() }>Delete</button>
                     </div>       
                 </div>
