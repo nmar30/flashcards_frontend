@@ -24,7 +24,7 @@ const CollectionsItem = (props) => {
             <div className="card" style={{width: '18rem'}} >
             <div className="card-body">
                 <h5 className="card-title" onClick={() => selectCollection(item)}>{item.name}</h5>
-                <p className="card-text">{item.description}</p>
+                <p className="card-text" onClick={() => selectCollection(item)}>{item.description}</p>
                 <button className="btn btn-danger" onClick={() => deleteCollection(item.id) }>Delete</button>
             </div>
             </div>
