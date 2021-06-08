@@ -50,7 +50,11 @@ const Flashcards = (props) => {
 
     async function deleteFlashcard(){
         async function deleteData() {
-            await axios.delete(`collection/${selected_collection.id}/flashcard/${flashcards[selected_flashcard].id}`)
+            try{
+                await axios.delete(`collection/${selected_collection.id}/flashcard/${flashcards[selected_flashcard].id}`)
+            } catch (er){
+                console.log('ERROR in deleteFlashcards', er)
+            }  
         }
         await deleteData();
         const next_card = selected_flashcard - 1
