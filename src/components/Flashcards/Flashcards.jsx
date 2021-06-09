@@ -70,7 +70,7 @@ const Flashcards = (props) => {
     function nextFlashcard () {
         const next_card = selected_flashcard + 1
         if (flashcards[next_card] === undefined) {
-            alert('No more cards!')
+            setSelectedFlashcard(0)
         } else {
             setSelectedFlashcard(next_card)
             setCurrentSide('front')
@@ -80,7 +80,7 @@ const Flashcards = (props) => {
     function previousFlashcard () {
         const next_card = selected_flashcard - 1
         if (flashcards[next_card] === undefined) {
-            alert('No more cards!')
+            setSelectedFlashcard(flashcards.length - 1)
         } else {
             setCurrentSide('front')
             setSelectedFlashcard(selected_flashcard - 1)
