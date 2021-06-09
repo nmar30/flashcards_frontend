@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../axios';
 import FlashcardsForm from './FlashcardsForm';
+import UpdateFlashcardForm from './UpdateFlashcardForm';
 
 
 const Flashcards = (props) => {
@@ -20,7 +21,7 @@ const Flashcards = (props) => {
             fetchFlashcards();
         }
         else{   
-            
+            console.log('data not ready')
         }  
     }
 
@@ -65,6 +66,18 @@ const Flashcards = (props) => {
             setSelectedFlashcard(selected_flashcard - 1)
             await fetchFlashcards();
         }
+    }
+
+    async function updateFlashcard(values){
+        async function putData() {
+            try{
+                await axios.put(`collection/${selected_collection.id}/flashcard/${flashcards[selected_flashcard].id}`, values);    
+            } catch (er){
+                console.log('ERROR in updateFlashcards', er)
+                }
+            }
+        await putData();
+        await fetchFlashcards();
     }
 
     function nextFlashcard () {
@@ -133,6 +146,7 @@ const Flashcards = (props) => {
                     <div className='col-2'><button className="btn btn-secondary" onClick={() => previousFlashcard()}>Previous</button></div>
                     <div className='col-8'>
                         <h3 className='text-center'>{selected_flashcard + 1} / {flashcards.length}</h3>
+                        <UpdateFlashcardForm selected_collection={selected_collection} selected_flashcard={selected_flashcard} updateFlashcard={updateFlashcard.bind(this)} />
                     </div>
                     <div className='col-2'><button className="btn btn-secondary" onClick={() => nextFlashcard()}>next</button></div>
                 </div>
